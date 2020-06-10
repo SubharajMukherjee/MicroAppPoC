@@ -8,15 +8,15 @@
 <!-- <app-test-comp *ngIf="toggle === 'true'"></app-test-comp> -->
 <!-- <app-test-comp></app-test-comp> -->
 <!-- <app-test-comp2 *ngIf="toggle === 'false'"></app-test-comp2> -->
-<div [ngSwitch]="appName">
-    <div *ngSwitchCase="'button1'">
+<div [ngSwitch]="enableVersion">
+    <div *ngSwitchCase="'5'">
         <app-test-element1></app-test-element1>
     </div>
-    <div *ngSwitchCase="'button2'">
+    <div *ngSwitchCase="'7'">
         <app-test-comp2></app-test-comp2>
     </div>
     <div *ngSwitchDefault>
-        <app-test-comp></app-test-comp>
+        <app-test-comp *ngIf="allowFurther"></app-test-comp>
     </div>
 </div>
   

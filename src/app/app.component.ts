@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppComponentService } from './app-component.service';
 
 @Component({
   selector: 'app-root',
@@ -26,10 +27,21 @@ export class AppComponent implements OnInit{
   // togg1() {
   //   this.toggle = 'false';
   // }
-  appName: string = null;
+  enableVersion: string = null;
+  allowFurther = false;
+  constructor(private svc: AppComponentService) { }
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
-    this.appName = localStorage.getItem("demo");
+    this.svc.getConfig().subscribe(data => {
+      console.log(JSON.stringify(data));
+      localStorage.setItem('appVersion', JSON.stringify(data));
+      this.allowFurther = true;
+    },
+    ()=> {
+      console.log('Config file not found');
+      this.allowFurther = false;
+    });
+    this.enableVersion = localStorage.getItem("enableVersion");
   }
 }
