@@ -3,8 +3,20 @@
 <!-- <demo-el></demo-el>   -->
  <!-- <app-element></app-element>  -->
 <!-- <demo-el></demo-el> -->
-<button (click)="togg()">Button1</button>
-<button (click)="togg1()">Button2</button>
-<app-test-comp *ngIf="toggle === 'true'"></app-test-comp>
-<app-test-comp2 *ngIf="toggle === 'false'"></app-test-comp2>
+<!-- <button (click)="togg()">Button1</button> -->
+<!-- <button (click)="togg1()">Button2</button> -->
+<!-- <app-test-comp *ngIf="toggle === 'true'"></app-test-comp> -->
+<!-- <app-test-comp></app-test-comp> -->
+<!-- <app-test-comp2 *ngIf="toggle === 'false'"></app-test-comp2> -->
+<div [ngSwitch]="appName">
+    <div *ngSwitchCase="'button1'">
+        <app-test-element1></app-test-element1>
+    </div>
+    <div *ngSwitchCase="'button2'">
+        <app-test-comp2></app-test-comp2>
+    </div>
+    <div *ngSwitchDefault>
+        <app-test-comp></app-test-comp>
+    </div>
+</div>
   

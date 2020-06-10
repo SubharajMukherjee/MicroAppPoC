@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'test';
   toggle: string = 'test';
   // ngOnInit(): void {
@@ -18,12 +18,18 @@ export class AppComponent {
     
   // }
 
-  togg() {
-    // this.toggle = this.toggle === 'true' ? 'false' : 'true';
-    this.toggle = 'true';
-  }
+  // togg() {
+  //   // this.toggle = this.toggle === 'true' ? 'false' : 'true';
+  //   this.toggle = 'true';
+  // }
 
-  togg1() {
-    this.toggle = 'false';
+  // togg1() {
+  //   this.toggle = 'false';
+  // }
+  appName: string = null;
+  ngOnInit(): void {
+    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+    //Add 'implements OnInit' to the class.
+    this.appName = localStorage.getItem("demo");
   }
 }
